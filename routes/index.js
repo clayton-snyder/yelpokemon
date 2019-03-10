@@ -24,12 +24,21 @@ router.get('/', (req, res) => {
       console.log(`#${row.id}: ${row.name} [${row.typePrimary}${typeSecondary}] ${row.flavorText}`);
     });
     for (let i = 0; i < rows.length; i++) {
-      result += `${rows[i].id}:${rows[i].name}    `;
+      result += `#${rows[i].id} ${rows[i].name} .. `;
     }
     console.log('after loading: ' + result);
     res.render('index', { title: 'YELPOKEMON', result: result });
   });
 });
+
+router.post('/pokemon/:id/review', (req, res) => {
+  const queryText = `INSERT INTO review (pokemonPK, stars, reviewText) ` + 
+    `VALUES (${req.params.id}, ${req.body.rating}, "${req.body.reviewText}");`;
+  db.query(queryText, (err, results) => {
+    if (err) throw err;
+    res.send(`Review submitted for Pokemon #${req.params.id}!`);
+  });
+})
 
 router.get('/about', (req, res) => {
   res.send('abouut');
