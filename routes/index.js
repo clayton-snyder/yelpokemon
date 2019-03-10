@@ -5,9 +5,9 @@ const mysql = require('mysql');
 
 const db = mysql.createConnection({
   host      : process.env.RDS_HOST || 'localhost',
-  user      : 'yelpokemon',
-  password  : 'yelpokemon',
-  database  : 'yelpokemon'
+  user      : process.env.RDS_USER || 'yelpokemon',
+  password  : process.env.RDS_PASSWORD || 'yelpokemon',
+  database  : process.env.RDS_DB || 'yelpokemon'
 });
 db.connect((err) => {
   if (err) throw err;
