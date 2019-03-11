@@ -111,6 +111,7 @@ router.get('/about', (req, res) => {
 
 // This endpoint loads pokemon from #1-151 into the database. Disabled so it can't be called
 // publicly. Uncomment and hit the endpoint if you want to re-load the database.
+/*
 router.get('/load-db', async(req, res) => {
   res.write('loading...');
   for (let i = 1; i <= 151; i++) {
@@ -142,6 +143,7 @@ router.get('/load-db', async(req, res) => {
   res.write('\nDatabase loaded!');
   res.end();
 });
+*/
 
 
 module.exports = router;
