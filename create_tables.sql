@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS pokemon
 CREATE TABLE IF NOT EXISTS review
 (
     id              INTEGER PRIMARY KEY AUTO_INCREMENT,
-    pokemonPK       INTEGER NOT NULL,
+    pokemonName     VARCHAR(20) NOT NULL,
     stars           INTEGER NOT NULL,
     reviewText      TEXT
 );
