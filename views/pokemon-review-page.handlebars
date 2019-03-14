@@ -1,17 +1,31 @@
-<h1>#{{number}} {{name}}</h1>
-<p>Primary type: {{typePrimary}}</p> 
-<p>Secondary type: {{typeSecondary}}</p>
-<p>Average rating: {{rating}}</p>
-<p>Reviews: </p>
-<form action='/pokemon/{{name}}/review' method='post'>
-    <fieldset>
-        <legend>Submit a review for {{name}}:</legend>
-        Rating (1 - 5):
-        <input type='number' min='1' max='5' name='rating'>
-        <br>
-        Comments:
-        <input type='text' name='reviewText'>
-        <br><br>
-        <input type='submit' value='submit' id='submit-review'>
-    </fieldset>
-</form>
+<div class="row">
+  
+  <div class="leftcol">
+    <innercol>
+      <img src='/pics/{{name}}.jpg'>
+      <h1>#{{number}} {{name}}</h1>
+      <p>Primary type: {{typePrimary}}</p> 
+      <p>Secondary type: {{typeSecondary}}</p>
+      <p>Average rating: {{rating}}</p>
+    </innercol>
+  </div>
+
+  <div class="rightcol">
+    <inner>
+      
+      <form action='/pokemon/{{name}}/review' method='post'>
+          <fieldset>
+              <legend>Submit a review for {{name}}:</legend>
+              Rating (1 - 5):
+              <input type='number' min='1' max='5' name='rating'>
+              <br>
+              Comments:
+              <input type='text' name='reviewText'>
+              <br><br>
+              <input type='submit' value='submit' id='submit-review'>
+          </fieldset>
+      </form>
+      <p>Reviews: </p>
+    </inner> 
+  </div>
+</div>
