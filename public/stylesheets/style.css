@@ -4,25 +4,90 @@ body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	background-color: #f2f2f2;
 	margin-top: 0px;
-	margin-right: 0px;
+	margin-right: 20px;
 	margin-bottom: 0px;
-	margin-left: 0px;
+	margin-left: 20px;
 	font-style: normal;
-	font-weight: 200;
+  font-weight: 200;
+  
 }
 
 .wrapper {
   margin-left:auto;
   margin-right:auto;
   width:960px;
+  
 }
 /* Container */
 .container {
-	width: 90%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	height: 1000px;
-	background-color: #FFFFFF;
+  background-color: #FFFFFF;
+  
+}
+
+.outer, .inner {
+  display: block;
+}
+
+.outer {
+  /* specify fixed width */
+  width: 1000px;
+  padding: 0;
+}
+
+.inner {
+  /* specify padding, can be changed while remaining fixed width of .outer */
+  padding: 20px;
+}
+
+.grid { 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+  align-items: auto;
+  /* padding-left: 25px;
+	padding-right: 25px; */
+  }
+.grid > card {
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+}
+.grid > card img {
+  display:table-cell;
+  margin-left: auto;
+  margin-right:auto;
+	margin-top: 10px;
+  max-width: 100%;
+  max-height: 200px;
+
+}
+
+.cardcontainer {
+	width: 100%;
+  height: 200px;
+  background-color: rgb(90, 29, 29);
+}
+
+.text {
+  padding: 0 20px 20px;
+}
+.text > button {
+  background: gray;
+  border: 0;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  }
+
+.containerheader {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	height: 1000px;
+  background-color: #FFFFFF;
 }
 /* Navigation */
 header {
@@ -142,12 +207,7 @@ footer .footer_column p {
 	color: #717070;
 	background-color: #FFFFFF;
 }
-.cards {
-	width: 100%;
-	height: auto;
-	max-width: 400px;
-	max-height: 200px;
-}
+
 footer .footer_column p {
 	padding-left: 30px;
 	padding-right: 30px;
@@ -207,3 +267,5 @@ footer {
 .hidden {
 	display: none;
 }
+
+
