@@ -1,18 +1,67 @@
 var createError = require('http-errors');
 var express = require('express');
 var exphbs = require('express-handlebars');
+var Handlebars = require('handlebars');
 var path = require('path');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
+const _ = require('lodash');
 
 var indexRouter = require('./routes/index');
 
 var app = express();
 
+const cardTemplate = {
+  imgSrc: '',
+  name: '',
+  dexNum: '',
+  toHtml: function() {
+    return `<card>
+      <div class="cardcontainer">
+        <img src="pics/${this.name.toLowerCase()}.jpg" alt="${this.name}" align="center" valign="center">
+      </div>
+      <div class="text">
+        <h3>${this.name}</h3>
+        <p>PokeDex: ${this.dexNum}</p>
+        <button>Leave a Review</button>
+      </div>
+    </card>`
+  }
+}
+
+const hbs = exphbs.create({
+  defaultLayout: 'main',
+  handlebars: Handlebars,
+  helpers: {
+    generateCards: function(rows) {
+      let cardsHtml = '';
+      console.log('going into foreach');
+      _.forEach(rows, (row) => {
+        const card = _.cloneDeep(cardTemplate);
+        card.imgSrc = `pics/${row.name.toLowerCase()}.jpg`;
+        console.log(`card.imgSrc: ${card.imgSrc}`);
+        card.name = row.name.charAt(0).toUpperCase() + row.name.slice(1).toLowerCase();
+        card.dexNum = toPokedexString(row.id);
+        cardsHtml += card.toHtml();
+      });
+      return new Handlebars.SafeString(cardsHtml);
+    }
+  }
+})
+
+const toPokedexString = function(id) {
+  const digits = id.toString().length;
+  if (digits === 1) {
+    return `00${id}`;
+  } else if (digits === 2) {
+    return `0${id}`;
+  } else {
+    return `${id}`;
+  }
+}
+
 // view engine setup
-app.engine('handlebars', exphbs({
-  defaultLayout: 'main'
-}));
+app.engine('handlebars', hbs.engine);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
@@ -43,5 +92,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

@@ -22,7 +22,10 @@ db.connect((err) => {
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.render('index', { title: 'YELPOKEMON' });
+  db.query('SELECT * FROM pokemon', (err, rows) => {
+    if (err) throw err;
+    res.render('index', { rows: rows });
+  });
   // db.query('SELECT * FROM pokemon', (err, rows) => {
   //   if (err) throw err;
   //   _.forEach(rows, (row) => {
