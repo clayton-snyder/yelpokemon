@@ -109,7 +109,7 @@ router.post('/pokemon/:name/review', (req, res) => {
 })
 
 router.get('/about', (req, res) => {
-  res.send('abouuut');
+  res.render('about');
 });
 
 // This endpoint loads pokemon from #1-151 into the database. Disabled so it can't be called

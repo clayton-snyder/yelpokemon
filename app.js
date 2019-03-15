@@ -23,7 +23,7 @@ const cardTemplate = {
       <div class="text">
         <h3>${this.name}</h3>
         <p>PokeDex: ${this.dexNum}</p>
-        <button>Leave a Review</button>
+        <button onclick="window.location.href = '/pokemon/${this.name}';">View ${this.name}</button>
       </div>
     </card>`
   }
