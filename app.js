@@ -33,13 +33,14 @@ const hbs = exphbs.create({
   defaultLayout: 'main',
   handlebars: Handlebars,
   helpers: {
+    toLowerCase: function(string) { 
+      return string.toLowerCase() 
+    },
     generateCards: function(rows) {
       let cardsHtml = '';
-      console.log('going into foreach');
       _.forEach(rows, (row) => {
         const card = _.cloneDeep(cardTemplate);
         card.imgSrc = `pics/${row.name.toLowerCase()}.jpg`;
-        console.log(`card.imgSrc: ${card.imgSrc}`);
         card.name = row.name.charAt(0).toUpperCase() + row.name.slice(1).toLowerCase();
         card.dexNum = toPokedexString(row.id);
         cardsHtml += card.toHtml();

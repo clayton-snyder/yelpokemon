@@ -81,7 +81,7 @@ router.get('/pokemon/:name', (req, res) => {
 
       res.render('pokemon-review-page', {
         number: number,
-        name: name, 
+        name: name,
         typePrimary: typePrimary,
         typeSecondary: typeSecondary,
         rating: avgRating,
