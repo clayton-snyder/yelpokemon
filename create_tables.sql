@@ -12,5 +12,6 @@ CREATE TABLE IF NOT EXISTS review
     id              INTEGER PRIMARY KEY AUTO_INCREMENT,
     pokemonName     VARCHAR(20) NOT NULL,
     stars           INTEGER NOT NULL,
-    reviewText      TEXT
+    reviewText      TEXT,
+    author          VARCHAR(30)
 );
