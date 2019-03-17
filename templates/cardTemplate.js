@@ -12,9 +12,10 @@ const cardTemplate = {
         <div class="text">
           <h3>#${this.dexNum}: ${this.name}</h3>
           <table>
-            <tr><th>Average Rating</th></tr>
             <tr>
-              <th>
+                <b>Average Rating:</b>
+            <tr>
+              <th style="width:50px">
                 <div class="star-ratings-sprite">
                   <span style="width:${this.percentRating}%" class="star-ratings-sprite-rating">(3.5)</span>
                 </div>

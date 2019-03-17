@@ -3,10 +3,10 @@ const reviewTemplate = {
     percentRating: 0,
     reviewText: '',
     toHtml: function() {
-      return `<table style="width:160px">
+      return `<table style="width:260px">
       <hr>
       <tr style="width:50px">
-        <th>
+        <th style="width:50px">
           <div class="star-ratings-sprite">
             <span style="width:${this.percentRating}%" class="star-ratings-sprite-rating"></span>
           </div>
