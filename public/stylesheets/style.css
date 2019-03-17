@@ -2,7 +2,7 @@
 /* Body */
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background-color: #f2f2f2;
+	background-color: #ffffff;
 	margin-top: 0px;
 	margin-right: 20px;
 	margin-bottom: 0px;
@@ -79,12 +79,28 @@ body {
   padding: 0 20px 20px;
 }
 .text > button {
-  background: gray;
+  background: grey;
   border: 0;
   color: white;
   padding: 10px;
   width: 100%;
   }
+
+.text > button:hover {
+  background: rgb(82, 81, 81);
+  border: 0;
+  color: white;
+  padding: 10px;
+  width: 100%;
+}
+
+.text > button:active {
+  background: rgb(58, 58, 58);
+  border: 0;
+  color: white;
+  padding: 10px;
+  width: 100%;
+}
 
 .containerheader {
 	width: 100%;
@@ -115,7 +131,7 @@ header {
 	color: #fff;
 	font-weight: bold;
 	text-align: undefined;
-	width: 10%;
+	width: 15%;
 	float: left;
 	margin-top: 13px;
 	margin-left: 80px;
@@ -222,41 +238,20 @@ footer .footer_column p {
 	margin-right: 20px;
 }
 .button {
-	width: 200px;
-	margin-top: 40px;
-	margin-right: auto;
-	margin-bottom: auto;
-	margin-left: auto;
-	padding-top: 20px;
-	padding-right: 10px;
-	padding-bottom: 20px;
-	padding-left: 10px;
-	text-align: center;
-	vertical-align: middle;
-	border-radius: 0px;
-	text-transform: uppercase;
-	font-weight: bold;
-	letter-spacing: 2px;
-	border: 3px solid rgb(20, 6, 6);
-	color: rgb(143, 132, 132);
-	transition: all 0.3s linear;
+	background: grey;
+  border: 0;
+  color: white;
+  padding: 10px;
+  width: 100%;
 }
 .button:hover {
-	background-color: rgb(143, 79, 79);
-	color: rgb(241, 133, 133);
-	cursor: pointer;
+	background: rgb(82, 81, 81);
+  border: 0;
+  color: white;
+  padding: 10px;
+  width: 100%;
 }
-.copyright {
-	text-align: center;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	background-color: #717070;
-	color: #FFFFFF;
-	text-transform: uppercase;
-	font-weight: lighter;
-	letter-spacing: 2px;
-	border-top-width: 2px;
-}
+
 .footer_banner {
 	background-color: #B3B3B3;
 	padding-top: 60px;
@@ -288,7 +283,7 @@ footer {
   background-color: #f2f2f2;
   box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
   width: 600px;
-  max-height: 700px;
+  /* max-height: 700px; */
   padding:10px
 }
 
@@ -334,18 +329,18 @@ footer {
   content: '★ ';
 }
 .rate > input:checked ~ label {
-  color: #ffc700;    
+  color: rgb(255, 135, 43);    
 }
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-  color: #deb217;  
+  color: rgb(245, 139, 58);  
 }
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
-  color: #c59b08;
+  color: rgb(195, 98, 23);
 }
 
 table {
