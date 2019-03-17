@@ -28,8 +28,15 @@ const hbs = exphbs.create({
         card.imgSrc = `pics/${row.name.toLowerCase()}.jpg`;
         card.name = row.name.charAt(0).toUpperCase() + row.name.slice(1).toLowerCase();
         card.dexNum = toPokedexString(row.id);
-        card.avgRating = row.averageRating;
-        card.percentRating = (row.averageRating / 5) * 100;
+
+        if (`${row.averageRating}` === '0') {
+          card.avgRating = 'No reviews';
+          card.percentRating = 0;
+        } else {
+          card.avgRating = row.averageRating;
+          card.percentRating = (row.averageRating / 5) * 100;
+        }
+
         cardsHtml += card.toHtml();
       });
       return new Handlebars.SafeString(cardsHtml);
