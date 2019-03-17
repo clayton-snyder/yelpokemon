@@ -41,6 +41,8 @@
                   </th>
                 </tr>  
               </table>
+              Your name (optional):
+              <input type='text' name='author'>
               <br>
               Comments:
               <input type='text' name='reviewText'>
@@ -69,26 +71,8 @@
       <br>
       <font size="5">Reviews </font>
 
-      <table style="width:160px">
-        <hr>
-        <tr style="width:50px">
-          <th>
-            <div class="star-ratings-sprite">
-              <span style="width:{{percentRating}}%" class="star-ratings-sprite-rating"></span>
-            </div>
-          </th>
-          <th> &nbsp User</th>
-        </tr>
-        <tr></tr>
-      </table>
+      {{{generateReviews rows}}}
 
-      <table align="right"> 
-        <tr>
-          <i>"fuck this pokemonfuck this pokemonfuck this pokemonfuck this pokemonfuck this pokemonfuck this pokemonfuck this pokemonfuck this pokemonfuck this pokemon" </i>
-        </tr>
-        
-      </table>
-      
       <hr>
     </inner> 
   </div>
