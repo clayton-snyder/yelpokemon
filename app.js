@@ -7,68 +7,12 @@ var logger = require('morgan');
 const bodyParser = require('body-parser');
 const _ = require('lodash');
 
+const cardTemplate = require('./templates/cardTemplate').cardTemplate;
+const reviewTemplate = require('./templates/reviewTemplate').reviewTemplate;
+
 var indexRouter = require('./routes/index');
 
 var app = express();
-
-const cardTemplate = {
-  imgSrc: '',
-  name: '',
-  dexNum: '',
-  avgRating: 'No reviews',
-  percentRating: 0,
-  toHtml: function() {
-    return `<card>
-      <div class="cardcontainer">
-        <img src="pics/${this.name.toLowerCase()}.jpg" alt="${this.name}" align="center" valign="center">
-      </div>
-      <div class="text">
-        <h3>#${this.dexNum}: ${this.name}</h3>
-        <table>
-          <tr><th>Average Rating</th></tr>
-          <tr>
-            <th>
-              <div class="star-ratings-sprite">
-                <span style="width:${this.percentRating}%" class="star-ratings-sprite-rating">(3.5)</span>
-              </div>
-            </th>
-            <th><span>(${this.avgRating})</span></th>
-          </tr>
-        </table>
-
-        <br>
-
-        <button onclick="window.location.href = '/pokemon/${this.name}';">View ${this.name}</button>
-      </div>
-    </card>`
-  }
-}
-
-const reviewTemplate = {
-  author: '',
-  percentRating: 0,
-  reviewText: '',
-  toHtml: function() {
-    return `<table style="width:160px">
-    <hr>
-    <tr style="width:50px">
-      <th>
-        <div class="star-ratings-sprite">
-          <span style="width:${this.percentRating}%" class="star-ratings-sprite-rating"></span>
-        </div>
-      </th>
-      <th> &nbsp by ${this.author}</th>
-    </tr>
-  </table>
-
-  <table align="right"> 
-    <tr>
-      <i>${this.reviewText}</i>
-    </tr>
-    
-  </table>`
-  }
-}
 
 const hbs = exphbs.create({
   defaultLayout: 'main',
