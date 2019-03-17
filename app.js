@@ -23,6 +23,22 @@ const cardTemplate = {
       <div class="text">
         <h3>${this.name}</h3>
         <p>PokeDex: ${this.dexNum}</p>
+
+        <table>
+          <tr>
+            <th>
+              <p>Average rating: </p>
+            </th>
+            <th>
+              <div class="star-ratings-sprite">
+                <span style="width:32%" class="star-ratings-sprite-rating"></span>
+              </div>
+            </th>
+          </tr>
+        </table>
+
+        <br>
+
         <button onclick="window.location.href = '/pokemon/${this.name}';">View ${this.name}</button>
       </div>
     </card>`

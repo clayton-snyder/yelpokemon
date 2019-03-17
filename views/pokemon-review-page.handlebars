@@ -6,7 +6,6 @@
       <h1>#{{number}} {{name}}</h1>
       <p>Primary type: {{typePrimary}}</p> 
       <p>Secondary type: {{typeSecondary}}</p>
-      <p>Average rating: {{rating}}</p>
     </innercol>
   </div>
 
@@ -49,6 +48,23 @@
               <input type='submit' value='Submit' id='submit-review'>
           </fieldset>
       </form>
+      <br>
+
+      <table style="width:260px">
+        <tr>
+          <th>
+            Average rating: 
+          </th>
+          <th>
+            <div class="star-ratings-sprite">
+              <span style="width:{{percentRating}}%" class="star-ratings-sprite-rating"></span>
+            </div>
+          </th>
+          <th>
+            ({{rating}})
+          </th>
+        </tr>
+      </table>
       <p>Reviews: </p>
     </inner> 
   </div>
