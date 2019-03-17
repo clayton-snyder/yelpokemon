@@ -15,25 +15,24 @@ const cardTemplate = {
   imgSrc: '',
   name: '',
   dexNum: '',
+  avgRating: 'No reviews',
+  percentRating: 0,
   toHtml: function() {
     return `<card>
       <div class="cardcontainer">
         <img src="pics/${this.name.toLowerCase()}.jpg" alt="${this.name}" align="center" valign="center">
       </div>
       <div class="text">
-        <h3>${this.name}</h3>
-        <p>PokeDex: ${this.dexNum}</p>
-
+        <h3>#${this.dexNum}: ${this.name}</h3>
         <table>
+          <tr><th>Average Rating</th></tr>
           <tr>
             <th>
-              <p>Average rating: </p>
-            </th>
-            <th>
               <div class="star-ratings-sprite">
-                <span style="width:32%" class="star-ratings-sprite-rating"></span>
+                <span style="width:${this.percentRating}%" class="star-ratings-sprite-rating">(3.5)</span>
               </div>
             </th>
+            <th><span>(${this.avgRating})</span></th>
           </tr>
         </table>
 
@@ -42,6 +41,32 @@ const cardTemplate = {
         <button onclick="window.location.href = '/pokemon/${this.name}';">View ${this.name}</button>
       </div>
     </card>`
+  }
+}
+
+const reviewTemplate = {
+  author: '',
+  percentRating: 0,
+  reviewText: '',
+  toHtml: function() {
+    return `<table style="width:160px">
+    <hr>
+    <tr style="width:50px">
+      <th>
+        <div class="star-ratings-sprite">
+          <span style="width:${this.percentRating}%" class="star-ratings-sprite-rating"></span>
+        </div>
+      </th>
+      <th> &nbsp by ${this.author}</th>
+    </tr>
+  </table>
+
+  <table align="right"> 
+    <tr>
+      <i>${this.reviewText}</i>
+    </tr>
+    
+  </table>`
   }
 }
 
@@ -59,12 +84,27 @@ const hbs = exphbs.create({
         card.imgSrc = `pics/${row.name.toLowerCase()}.jpg`;
         card.name = row.name.charAt(0).toUpperCase() + row.name.slice(1).toLowerCase();
         card.dexNum = toPokedexString(row.id);
+        card.avgRating = row.averageRating;
+        card.percentRating = (row.averageRating / 5) * 100;
         cardsHtml += card.toHtml();
       });
       return new Handlebars.SafeString(cardsHtml);
+    },
+    generateReviews: function(rows) {
+      let reviewsHtml = '';
+      _.forEach(rows, (row) => {
+        const review = _.cloneDeep(reviewTemplate);
+        review.author = row.author;
+        review.percentRating = (row.stars / 5) * 100;
+        if (row.reviewText.length > 0) {
+          review.reviewText = `"${row.reviewText}"`;
+        }
+        reviewsHtml += review.toHtml();
+      });
+      return new Handlebars.SafeString(reviewsHtml);
     }
   }
-})
+});
 
 const toPokedexString = function(id) {
   const digits = id.toString().length;
