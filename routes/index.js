@@ -90,11 +90,15 @@ router.post('/pokemon/:name/review', (req, res) => {
     res.render('error', { code: 400, message: "Must submit a rating between 1 and 5."});
     return;
   }
+  let author = req.body.author;
+  if (author.length < 1 || author.length > 30) {
+    author = 'Anonymous';
+  }
   const queryText = 
     `INSERT INTO review
     (pokemonName, stars, reviewText, author)  
     VALUES
-    ("${req.params.name}", ${req.body.rating}, "${req.body.reviewText}", "${req.body.author}");`;
+    ("${req.params.name}", ${req.body.rating}, "${req.body.reviewText}", "${author}");`;
     
   db.query(queryText, (err, results) => {
     if (err) { 
