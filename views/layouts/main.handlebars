@@ -15,11 +15,11 @@
         <a href="/"><h4 class="logo">YELPOKEMON</h4></a>
 
         <div class="searchbar">
-          <input type="text" placeholder="Search.." name="search"> 
+          <input type="text" placeholder="Search.." id="searchtext"> 
         </div>
 
         <div class="search-button" > 
-          <button type="submit" >Submit</button>
+          <button type="submit" id="searchbutton">Submit</button>
         </div>
 
       <nav>
@@ -41,3 +41,14 @@
 
 </body>
 </html>
+
+<script>
+  var text1 = document.querySelector("#searchtext");
+  var button = document.querySelector("#searchbutton");
+
+  button.addEventListener("click", function(){
+    window.location.href = `http://www.yelpokemon.com/pokemon/${text1.value}`
+    console.log("hello");
+  })
+
+</script>
